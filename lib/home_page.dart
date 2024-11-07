@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
-import 'package:sovann_and_ly/debug_box.dart';
+import 'package:sovann_and_ly/widgets/introduction.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 final verticalPhotos =
@@ -27,9 +27,15 @@ class _HomePageState extends State<HomePage> {
         body: SingleChildScrollView(
       child: Column(
         children: [
+          Introduction(),
           _topPhotoSection(context),
           _aboutCoupleSection(context),
           _date(context),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24),
+            child: _sovannQoute(context),
+          ),
+          SizedBox(height: 16),
           _countDown(context),
           Photo(
             src: horizontalPhotos[1],
@@ -121,64 +127,84 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget _sovannQoute(BuildContext context) {
+    final title = "We found love";
+    final content =
+        "You don’t love someone for their looks, or their clothes or their fancy car, but because they help you eat their vegatable. ";
+    return Column(
+      children: [
+        Text(title,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 16.sp),),
+        SizedBox(height: 12),
+        Text(
+          content,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 16.sp),
+        ),
+      ],
+    );
+  }
+
   Widget _date(BuildContext context) {
     final mapUrl = "https://maps.app.goo.gl/hLxmfccaN5huop8GA";
 
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
+    return Padding(
+      padding: EdgeInsets.all(24),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
         ),
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-            decoration: const BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.black)),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+              decoration: const BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.black)),
+              ),
+              child: Text("Saturday, 11 January 2025"),
             ),
-            child: Text("Saturday, 11 January 2025"),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-            child: Column(
-              children: [
-                Icon(
-                  Symbols.calendar_add_on,
-                  size: 40.r,
-                ),
-                SizedBox(height: 16.h),
-                Text(
-                  "Wedding Reception",
-                  style: TextStyle().copyWith(fontSize: 20.sp),
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  "Vimean Pi Phup Thmey Sen Sok Wedding Center (Building A)",
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 8.h),
-                FilledButton(
-                  onPressed: () {
-                    launchUrlString(mapUrl,
-                        mode: LaunchMode.externalApplication);
-                  },
-                  style: ButtonStyle(
-                      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r)))),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Symbols.location_pin),
-                      SizedBox(width: 8.w),
-                      Text("View Location"),
-                    ],
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+              child: Column(
+                children: [
+                  Icon(
+                    Symbols.calendar_add_on,
+                    size: 40.r,
                   ),
-                ),
-              ],
+                  SizedBox(height: 16.h),
+                  Text(
+                    "Wedding Reception",
+                    style: TextStyle().copyWith(fontSize: 20.sp),
+                  ),
+                  SizedBox(height: 8.h),
+                  Text(
+                    "Vimean Pi Phup Thmey Sen Sok Wedding Center (Building A)",
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8.h),
+                  FilledButton(
+                    onPressed: () {
+                      launchUrlString(mapUrl,
+                          mode: LaunchMode.externalApplication);
+                    },
+                    style: ButtonStyle(
+                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.r)))),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Symbols.location_pin),
+                        SizedBox(width: 8.w),
+                        Text("View Location"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -271,6 +297,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
 
     Widget _field(String label, int value) {
       final style = TextStyle(fontSize: 16.sp);
+      final labelStyle = GoogleFonts.bonheurRoyale(fontSize: 16.sp);
       return Column(
         children: [
           Text(
@@ -279,7 +306,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
           ),
           Text(
             label,
-            style: style,
+            style: labelStyle,
           ),
         ],
       );
@@ -289,8 +316,8 @@ class _CountdownTimerState extends State<CountdownTimer> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          "Count Down to our Big Day",
-          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+          "Our Wedding",
+          style: GoogleFonts.bonheurRoyale(fontSize: 45.sp, fontWeight: FontWeight.normal),
         ),
         SizedBox(height: 16.h),
         Row(
@@ -305,8 +332,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
         SizedBox(height: 16.h),
         FilledButton(
           onPressed: () {
-            launchUrlString(calenderUrl,
-                mode: LaunchMode.externalApplication);
+            launchUrlString(calenderUrl, mode: LaunchMode.externalApplication);
           },
           style: ButtonStyle(
               shape: WidgetStatePropertyAll(RoundedRectangleBorder(
