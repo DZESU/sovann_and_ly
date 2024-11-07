@@ -18,6 +18,7 @@ dependencies:
   material_symbols_icons: ^4.2785.1
   url_launcher: ^6.3.0
   intl: ^0.19.0
+  animate_do: ^3.3.4
 
 dev_dependencies:
   flutter_test:
@@ -39,6 +40,9 @@ flutter:
     - family: RetroSignature
       fonts:
         - asset: assets/font/RetroSignature.otf
+    - family: Andasia
+      fonts:
+        - asset: assets/font/Andasia.ttf
 
   #   - family: Trajan Pro
   #     fonts:

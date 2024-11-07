@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class DebugBox extends StatelessWidget {
-  const DebugBox({super.key, required this.child});
+  DebugBox({super.key, required this.child});
 
   final Widget child;
 
