@@ -3,6 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recase/recase.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
 
@@ -55,7 +56,7 @@ class _IntroductionState extends State<Introduction> {
                       totalRepeatCount: 1,
                       animatedTexts: [
                         TypewriterAnimatedText(
-                          name,
+                          name.sentenceCase,
                           speed: Duration(milliseconds: 100),
                           textAlign: TextAlign.center,
                           textStyle: baseTextStyle.copyWith(
