@@ -47,12 +47,12 @@ class ImageViewModel extends ChangeNotifier {
   final _urls = [];
 
   final _photosSectionUrl = [
-    "https://raw.githubusercontent.com/DZESU/DZESU.github.io/refs/heads/master/assets/assets/images/0.jpg",
-    "https://raw.githubusercontent.com/DZESU/DZESU.github.io/refs/heads/master/assets/assets/images/1.JPG",
-    "https://raw.githubusercontent.com/DZESU/DZESU.github.io/refs/heads/master/assets/assets/images/2.jpg",
-    "https://raw.githubusercontent.com/DZESU/DZESU.github.io/refs/heads/master/assets/assets/images/3.jpg",
-    "https://raw.githubusercontent.com/DZESU/DZESU.github.io/refs/heads/master/assets/assets/images/4.JPG",
-    "https://raw.githubusercontent.com/DZESU/DZESU.github.io/refs/heads/master/assets/assets/images/5.JPG",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/0.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/1.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/2.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/3.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/4.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/5.jpg",
   ];
 
   ImageViewModel() {
