@@ -69,19 +69,6 @@ class _IntroductionState extends State<Introduction> {
                   ),
                 ],
               ),
-              // Text.rich(
-              //     TextSpan(text: "Dear ", children: [
-              //       TextSpan(
-              //         text: name.titleCase ?? '',
-              //         style: baseTextStyle.copyWith(
-              //             fontSize: 30,
-              //             fontWeight: FontWeight.bold,
-              //             color: mainColor),
-              //       )
-              //     ]),
-              //     style: baseTextStyle.copyWith(fontSize: 30),
-              //     textAlign: TextAlign.center),
-
               SlideInLeft(
                 duration: Duration(milliseconds: 1000),
                 delay: Duration(milliseconds: 500),

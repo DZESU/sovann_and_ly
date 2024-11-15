@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sovann_and_ly/asset.dart';
 
 import 'home_page.dart';
 
@@ -47,20 +48,34 @@ class ImageViewModel extends ChangeNotifier {
   final _urls = [];
 
   final _photosSectionUrl = [
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/0.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/1.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/2.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/3.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/4.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/5.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/0.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/1.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/2.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/3.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/4.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/5.jpg",
   ];
 
   final introSectionUrl = [
-
+    Asset.weedLeft,
+    Asset.weedRight,
+    Asset.introductionMain,
   ];
 
   final agendaSectionUrl = [
+    Asset.cloth,
+    Asset.ring,
+    Asset.monk,
+    Asset.siccor,
+    Asset.heart,
+    Asset.fork,
+    Asset.glasses,
+  ];
 
+  final weddingDetailSection = [
+    Asset.sakura,
+    Asset.initialName,
+    Asset.map,
   ];
 
   ImageViewModel() {

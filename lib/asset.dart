@@ -1,6 +1,6 @@
 class Asset{
   Asset._();
-  static const String introductionMain = "assets/photo/intro_main.png";
+  static const String introductionMain = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/photo/intro_main.png";
   // static const String introBg = "assets/decor/bg.png";
   // static const String weed = "assets/decor/weed.png";
   // static const String cotton = "assets/decor/cotton.png";
