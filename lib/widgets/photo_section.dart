@@ -16,7 +16,7 @@ class PhotoSection extends ConsumerStatefulWidget {
 class _PhotoSectionState extends ConsumerState<PhotoSection> {
   List<String> get images => ref.watch(imagesProvider).photosSectionUrl;
 
-  delay(int index) => Duration(milliseconds: 00 + (100 * index));
+  delay(int index) => Duration(milliseconds: 00 + (50 * index));
 
   final animate = List.generate(6, (index) => false);
 
