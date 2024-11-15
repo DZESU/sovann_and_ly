@@ -99,7 +99,7 @@ class _IntroductionState extends State<Introduction> {
               SizedBox(height: 24),
               FadeInUp(
                   delay: Duration(seconds: 1),
-                  child: Image.asset(Asset.introductionMain)),
+                  child: Image.network(Asset.introductionMain)),
             ],
           )),
           Positioned(
