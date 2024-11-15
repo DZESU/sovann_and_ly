@@ -25,7 +25,6 @@ class _AppState extends State<App> {
           routerConfig: _router,
         );
       },
-      child: HomePage(),
     );
   }
 }

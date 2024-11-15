@@ -17,6 +17,7 @@ class Asset{
   static const String fork = "assets/decor/fork.webp";
   static const String glasses = "assets/decor/glasses.webp";
   static const String mainBg = "assets/decor/main_bg.webp";
+  static const String sakura = "assets/decor/sakura.webp";
 
 
 }

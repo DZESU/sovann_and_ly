@@ -1,9 +1,19 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
-class WeddingAgendaV2 extends StatelessWidget {
+class WeddingAgendaV2 extends StatefulWidget {
   const WeddingAgendaV2({super.key});
+
+  @override
+  State<WeddingAgendaV2> createState() => _WeddingAgendaV2State();
+}
+
+class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
+  final animate = List.generate(7, (_) => false);
+  delay(int index) => Duration(milliseconds: 00 + (100 * index));
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +32,6 @@ class WeddingAgendaV2 extends StatelessWidget {
     );
   }
 
-  // •  06:30 AM: Groom’s Processional (Hae Kon Kom Loh)
-  // •  08:15 AM: Ring Exchange and Honoring the Parents (Kat Khan Sla)
-  // •  09:02 AM: Monks’ Blessing (Soat Mun)
-  // •  09:35 AM: Hair Cutting Ritual (Kat sork)
-  // •  10:32 AM: Knot Tying (Sompeas Ptem)
-  // •  12:00 PM: Wedding Lunch
-  // •  05:00 PM: Dinner Party
-
   Widget _leftSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -47,6 +49,7 @@ class WeddingAgendaV2 extends StatelessWidget {
           label: "Ring Exchange & Honoring the Parents\n(Kat Khan Sla)",
           isRight: false,
           visible: true,
+          index: 1,
         ),
         _event(
           icon: Asset.monk,
@@ -61,6 +64,7 @@ class WeddingAgendaV2 extends StatelessWidget {
           label: "Hair Cutting Ritual (Kat sork)",
           isRight: false,
           visible: true,
+          index: 3,
         ),
         _event(
           icon: Asset.heart,
@@ -75,6 +79,7 @@ class WeddingAgendaV2 extends StatelessWidget {
           label: "Wedding Lunch",
           isRight: false,
           visible: true,
+          index: 5,
         ),
         _event(
           icon: Asset.glasses,
@@ -97,6 +102,7 @@ class WeddingAgendaV2 extends StatelessWidget {
           label: "Groom’s Processional (Hae Kon Kom Loh)",
           isRight: true,
           visible: true,
+          index: 0,
         ),
         _event(
           icon: Asset.ring,
@@ -111,6 +117,7 @@ class WeddingAgendaV2 extends StatelessWidget {
           label: "Monks’ Blessing (Soat Mun)",
           isRight: true,
           visible: true,
+          index: 2,
         ),
         _event(
           icon: Asset.siccor,
@@ -118,6 +125,7 @@ class WeddingAgendaV2 extends StatelessWidget {
           label: "Hair Cutting Ritual (Kat sork)",
           isRight: true,
           visible: false,
+
         ),
         _event(
           icon: Asset.heart,
@@ -125,6 +133,7 @@ class WeddingAgendaV2 extends StatelessWidget {
           label: "Knot Tying (Sompeas Ptem)",
           isRight: true,
           visible: true,
+          index: 4,
         ),
         _event(
           icon: Asset.fork,
@@ -139,6 +148,7 @@ class WeddingAgendaV2 extends StatelessWidget {
           label: "Dinner Party",
           isRight: true,
           visible: true,
+          index: 6,
         ),
       ],
     );
@@ -150,9 +160,40 @@ class WeddingAgendaV2 extends StatelessWidget {
     required String label,
     required bool isRight,
     required bool visible,
+    int? index,
   }) {
     final size = 45.0;
-    return Visibility(
+    final widget = Flexible(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (isRight) Image.asset(icon, height: size, width: size),
+          if (isRight) SizedBox(width: 8),
+          Flexible(
+            child: Column(
+              crossAxisAlignment:
+                  isRight ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  time,
+                  style: baseTextStyle.copyWith(
+                      fontWeight: FontWeight.bold, color: mainColor),
+                ),
+                Text(
+                  label,
+                  style: baseTextStyle.copyWith(fontWeight: FontWeight.normal),
+                  textAlign: isRight ? TextAlign.start : TextAlign.end,
+                ),
+              ],
+            ),
+          ),
+          if (!isRight) SizedBox(width: 8),
+          if (!isRight) Image.asset(icon, height: size, width: size),
+        ],
+      ),
+    );
+    final child = Visibility(
       visible: visible,
       maintainSize: true,
       maintainAnimation: true,
@@ -161,40 +202,21 @@ class WeddingAgendaV2 extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 12.0),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if(isRight)
-            SizedBox(
-              width: 20,
-              child: Divider(
-                color: mainColor,
-                thickness: 2,
+            if (isRight)
+              SizedBox(
+                width: 20,
+                child: Divider(
+                  color: mainColor,
+                  thickness: 2,
+                ),
               ),
-            ),
-            if (isRight) Image.asset(icon, height: size, width: size),
-            if (isRight) SizedBox(width: 8),
-            Flexible(
-              child: Column(
-                crossAxisAlignment:
-                    isRight ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    time,
-                    style: baseTextStyle.copyWith(fontWeight: FontWeight.bold, color: mainColor),
-                  ),
-                  Text(
-                    label,
-                    style:
-                        baseTextStyle.copyWith(fontWeight: FontWeight.normal),
-                    textAlign: isRight ? TextAlign.start : TextAlign.end,
-                  ),
-                ],
-              ),
-            ),
-            if (!isRight) SizedBox(width: 8),
-            if (!isRight) Image.asset(icon, height: size, width: size),
-            if(!isRight)
+            if (isRight && index != null)
+              Flexible(child: FadeInRight(delay: delay(index),animate: animate[index], child: widget)),
+            if (!isRight && index != null)
+              Flexible(child: FadeInLeft(delay: delay(index),animate: animate[index], child: widget)),
+            if (index == null) widget,
+            if (!isRight)
               SizedBox(
                 width: 20,
                 child: Divider(
@@ -206,5 +228,20 @@ class WeddingAgendaV2 extends StatelessWidget {
         ),
       ),
     );
+    if (index != null) {
+      return _animateWidget(index: index, child: child);
+    }
+    return child;
+  }
+
+  Widget _animateWidget({required int index, required Widget child}) {
+    return VisibilityDetector(
+        key: Key('photo_$index'),
+        onVisibilityChanged: (info) {
+          setState(() {
+            animate[index] = true;
+          });
+        },
+        child: child);
   }
 }

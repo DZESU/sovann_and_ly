@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sovann_and_ly/asset.dart';
@@ -27,32 +26,53 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final silverGap =
+        SliverPadding(padding: EdgeInsets.symmetric(vertical: 16));
     return Scaffold(
         body: Stack(
       children: [
         Image.asset(
           Asset.mainBg,
           height: 1.sh,
-          fit: BoxFit.fitHeight,
+          width: 1.sw,
+          fit: BoxFit.fill,
         ),
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Introduction(name: widget.name,),
-              SizedBox(height: 32),
-              NameSection(),
-              SizedBox(height: 32),
-              PhotoSection(),
-              SizedBox(height: 32),
-              WeddingDetail(),
-              SizedBox(height: 24),
-              WeddingAgendaV2(),
-              SizedBox(height: 32),
-              VenueSecion(),
-              SizedBox(height: 0.1.sh),
-            ],
-          ),
+        CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: Introduction(name: widget.name)),
+            silverGap,
+            SliverToBoxAdapter(child: NameSection()),
+            silverGap,
+            SliverToBoxAdapter(child: PhotoSection()),
+            silverGap,
+            SliverToBoxAdapter(child: WeddingDetail()),
+            silverGap,
+            SliverToBoxAdapter(child: WeddingAgendaV2()),
+            silverGap,
+            SliverToBoxAdapter(child: VenueSecion()),
+            silverGap,
+            silverGap,
+            
+          ],
         ),
+        // SingleChildScrollView(
+        //   child: Column(
+        //     children: [
+        //       Introduction(name: widget.name),
+        //       SizedBox(height: 32),
+        //       NameSection(),
+        //       SizedBox(height: 32),
+        //       PhotoSection(),
+        //       SizedBox(height: 32),
+        //       WeddingDetail(),
+        //       SizedBox(height: 24),
+        //       WeddingAgendaV2(),
+        //       SizedBox(height: 32),
+        //       VenueSecion(),
+        //       SizedBox(height: 0.1.sh),
+        //     ],
+        //   ),
+        // ),
       ],
     ));
   }
