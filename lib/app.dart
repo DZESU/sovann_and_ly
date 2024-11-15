@@ -55,8 +55,18 @@ class ImageViewModel extends ChangeNotifier {
     "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/images/5.jpg",
   ];
 
+  final introSectionUrl = [
+
+  ];
+
+  final agendaSectionUrl = [
+
+  ];
+
   ImageViewModel() {
     _urls.addAll(_photosSectionUrl);
+    _urls.addAll(introSectionUrl);
+    _urls.addAll(agendaSectionUrl);
   }
 
   List<String> get photosSectionUrl => _photosSectionUrl;
