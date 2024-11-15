@@ -40,7 +40,7 @@ class _HomePageState extends ConsumerState<HomePage> {
         SliverPadding(padding: EdgeInsets.symmetric(vertical: 16));
     return Stack(
       children: [
-        Image.asset(
+        Image.network(
           Asset.mainBg,
           height: 1.sh,
           width: 1.sw,

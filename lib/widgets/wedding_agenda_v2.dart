@@ -166,7 +166,7 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
     final widget = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (isRight) Image.asset(icon, height: size, width: size),
+        if (isRight) Image.network(icon, height: size, width: size),
         if (isRight) SizedBox(width: 8),
         Flexible(
           child: Column(
@@ -188,7 +188,7 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
           ),
         ),
         if (!isRight) SizedBox(width: 8),
-        if (!isRight) Image.asset(icon, height: size, width: size),
+        if (!isRight) Image.network(icon, height: size, width: size),
       ],
     );
     final child = Visibility(

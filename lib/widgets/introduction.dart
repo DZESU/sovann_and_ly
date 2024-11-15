@@ -18,8 +18,8 @@ class Introduction extends StatefulWidget {
 class _IntroductionState extends State<Introduction> {
   @override
   Widget build(BuildContext context) {
-    final decorLeft = Image.asset(Asset.weedLeft);
-    final decorRight = Image.asset(Asset.weedRight);
+    final decorLeft = Image.network(Asset.weedLeft);
+    final decorRight = Image.network(Asset.weedRight);
     final name = widget.name ?? (kDebugMode ? 'Sovann Pory' : '');
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: 1.sh),

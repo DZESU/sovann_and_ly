@@ -28,7 +28,7 @@ class _NameSectionState extends State<NameSection> {
                   opacity: .2,
                   child: Transform.scale(
                       scale: 1.5,
-                      child: Image.asset(
+                      child: Image.network(
                         Asset.sakura,
                         width: 1.sw,
                         fit: BoxFit.fitWidth,
@@ -70,7 +70,7 @@ class _NameSectionState extends State<NameSection> {
                     delay: Duration(milliseconds: 300),
                     curve: Curves.easeIn,
                     animate: _logoAnimate,
-                    child: Image.asset(Asset.initialName, height: 200),
+                    child: Image.network(Asset.initialName, height: 200),
                   ),
                 ),
               ),
