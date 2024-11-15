@@ -163,35 +163,33 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
     int? index,
   }) {
     final size = 45.0;
-    final widget = Flexible(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (isRight) Image.asset(icon, height: size, width: size),
-          if (isRight) SizedBox(width: 8),
-          Flexible(
-            child: Column(
-              crossAxisAlignment:
-                  isRight ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  time,
-                  style: baseTextStyle.copyWith(
-                      fontWeight: FontWeight.bold, color: mainColor),
-                ),
-                Text(
-                  label,
-                  style: baseTextStyle.copyWith(fontWeight: FontWeight.normal),
-                  textAlign: isRight ? TextAlign.start : TextAlign.end,
-                ),
-              ],
-            ),
+    final widget = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (isRight) Image.asset(icon, height: size, width: size),
+        if (isRight) SizedBox(width: 8),
+        Flexible(
+          child: Column(
+            crossAxisAlignment:
+                isRight ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                time,
+                style: baseTextStyle.copyWith(
+                    fontWeight: FontWeight.bold, color: mainColor),
+              ),
+              Text(
+                label,
+                style: baseTextStyle.copyWith(fontWeight: FontWeight.normal),
+                textAlign: isRight ? TextAlign.start : TextAlign.end,
+              ),
+            ],
           ),
-          if (!isRight) SizedBox(width: 8),
-          if (!isRight) Image.asset(icon, height: size, width: size),
-        ],
-      ),
+        ),
+        if (!isRight) SizedBox(width: 8),
+        if (!isRight) Image.asset(icon, height: size, width: size),
+      ],
     );
     final child = Visibility(
       visible: visible,
@@ -215,7 +213,7 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
               Flexible(child: FadeInRight(delay: delay(index),animate: animate[index], child: widget)),
             if (!isRight && index != null)
               Flexible(child: FadeInLeft(delay: delay(index),animate: animate[index], child: widget)),
-            if (index == null) widget,
+            if (index == null) Flexible(child: widget),
             if (!isRight)
               SizedBox(
                 width: 20,
