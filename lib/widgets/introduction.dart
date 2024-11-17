@@ -19,16 +19,16 @@ class Introduction extends StatefulWidget {
 class _IntroductionState extends State<Introduction> {
   @override
   Widget build(BuildContext context) {
-    final decorLeft = Image.network(Asset.weedLeft);
-    final decorRight = Image.network(Asset.weedRight);
+    final decorLeft = Image.network(Asset.sakura3);
+    final decorRight = Image.network(Asset.sakura3);
     final name = widget.name ?? (kDebugMode ? 'Sovann Pory' : '');
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: 1.sh),
       child: Stack(
         children: [
           Positioned(
-              top: -20,
-              right: -50,
+              top: 0,
+              right: -20,
               child: SizedBox(width: 140, child: decorRight)),
           SizedBox(
               // height: 1.sh,
@@ -39,8 +39,8 @@ class _IntroductionState extends State<Introduction> {
               SizedBox(height: 32),
               Text(
                 "Wedding Invitation",
-                style: TextStyle(
-                    fontSize: 40, fontFamily: "Andasia", color: mainColor),
+                style: baseTextStyle.copyWith(
+                    fontSize: 40, fontFamily: "Andasia"),
               ),
               SizedBox(height: 24),
               Row(
@@ -56,7 +56,7 @@ class _IntroductionState extends State<Introduction> {
                       totalRepeatCount: 1,
                       animatedTexts: [
                         TypewriterAnimatedText(
-                          name.sentenceCase,
+                          name.titleCase,
                           speed: Duration(milliseconds: 100),
                           textAlign: TextAlign.center,
                           textStyle: baseTextStyle.copyWith(
@@ -78,7 +78,7 @@ class _IntroductionState extends State<Introduction> {
                   delay: Duration(milliseconds: 600),
                   child: Text(
                     "You are invited to the wedding of",
-                    style: baseTextStyle.copyWith(fontSize: 20),
+                    style: baseTextStyle.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -92,7 +92,7 @@ class _IntroductionState extends State<Introduction> {
           )),
           Positioned(
               bottom: 0,
-              left: -40,
+              left: 0,
               child: SizedBox(width: 120, child: decorLeft)),
         ],
       ),

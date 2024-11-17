@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
@@ -13,13 +14,20 @@ class VenueSecion extends StatelessWidget {
     final mapUrl = "https://maps.app.goo.gl/hLxmfccaN5huop8GA";
     return Column(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: Image.network(
-            Asset.map,
-            width: .8.sw,
-          ),
+        // ClipRRect(
+        //   borderRadius: BorderRadius.circular(16),
+        //   child: Image.network(
+        //     Asset.map,
+        //     width: .8.sw,
+        //   ),
+        // ),
+        Text(
+          "Wedding Location",
+          style: baseTextStyle.copyWith(
+              fontSize: 40, fontFamily: "Andasia"),
         ),
+        SizedBox(height: 16.h),
+        SvgPicture.asset(Asset.mapSvg),
         SizedBox(height: 16),
         TextButton(
           onPressed: () {

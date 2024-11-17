@@ -15,10 +15,17 @@ class Asset{
   static const String siccor = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/siccor.webp";
   static const String heart = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/heart.webp";
   static const String fork = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/fork.webp";
-  static const String glasses = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/glasses.webp";
+  // static const String glasses = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/glasses.webp";
+  static const String glasses = "https://media-public.canva.com/MADnJmxRC2A/1/thumbnail.png";
   static const String mainBg = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/main_bg.webp";
   static const String sakura = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/sakura.webp";
   static const String loading = "assets/decor/loading.svg";
+  static const String smokeHearth = "assets/decor/smoke_hearh.webp";
+  static const String sakura1 = "assets/decor/sakura1.png";
+  static const String sakura2 = "assets/decor/sakura2.png";
+  static const String sakura3 = "https://media-public.canva.com/xNZA4/MAFJ32xNZA4/1/t.png";
+  static const String mapSvg = "assets/decor/map.svg";
+  static const String nameInitial = "assets/decor/name_intial.png";
 
 
 }

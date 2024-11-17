@@ -40,6 +40,11 @@ flutter:
   assets:
 #    - assets/photo/
     - assets/decor/loading.svg
+    - assets/decor/smoke_hearh.webp
+    - assets/decor/sakura1.png
+    - assets/decor/sakura2.png
+    - assets/decor/map.svg
+    - assets/decor/name_intial.png
 #    - assets/images/
 
   fonts:
@@ -55,6 +60,12 @@ flutter:
     - family: Andasia
       fonts:
         - asset: assets/font/Andasia.ttf
+    - family: WorldDiscovery
+      fonts:
+        - asset: assets/font/WorldDiscovery.otf
+    - family: Madina
+      fonts:
+        - asset: assets/font/Madina.ttf
 
   #   - family: Trajan Pro
   #     fonts:

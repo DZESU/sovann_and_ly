@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sovann_and_ly/app.dart';
+import 'package:sovann_and_ly/debug_box.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../asset.dart';
@@ -50,11 +51,11 @@ class _NameSectionState extends State<NameSection> {
                   child: Text(
                     "The Wedding Of",
                     style: baseTextStyle.copyWith(
-                        fontSize: 36, fontFamily: 'Andasia', color: mainColor),
+                        fontSize: 36, fontFamily: 'Andasia'),
                   ),
                 ),
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 50),
               VisibilityDetector(
                 key: Key('name_section_logo'),
                 onVisibilityChanged: (info) {
@@ -62,15 +63,27 @@ class _NameSectionState extends State<NameSection> {
                     _logoAnimate = true;
                   });
                 },
-                child: ZoomIn(
-                  delay: Duration(milliseconds: 200),
+                child: FadeIn(
+                  delay: Duration(milliseconds: 300),
                   curve: Curves.easeIn,
                   animate: _logoAnimate,
-                  child: FadeIn(
-                    delay: Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
-                    animate: _logoAnimate,
-                    child: Image.network(Asset.initialName, height: 200),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      // Opacity(
+                      //     opacity: .3,
+                      //     child: Transform.scale(
+                      //         scale: 2,
+                      //         child: Image.asset(Asset.smokeHearth,
+                      //             width: 150))),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 28),
+                        child: Image.asset(
+                          Asset.nameInitial,
+                          height: 300,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -108,12 +121,15 @@ class _NameSectionState extends State<NameSection> {
           label,
           style: baseTextStyle.copyWith(fontSize: 25, color: mainColor),
         ),
+        SizedBox(height: 16),
         Text(
           value,
           style: baseTextStyle.copyWith(
-              fontFamily: 'Andasia',
-              fontSize: 35,
-              fontWeight: FontWeight.normal),
+            fontFamily: 'Madina',
+            fontSize: 62,
+            height: 1,
+            fontWeight: FontWeight.w100,
+          ),
           textAlign: TextAlign.center,
         ),
       ],

@@ -17,7 +17,7 @@ class WeddingDetail extends StatelessWidget {
             Text(
               "Wedding Detail",
               style: baseTextStyle.copyWith(
-                  fontSize: 36, fontFamily: 'Andasia', color: mainColor),
+                  fontSize: 36, fontFamily: 'Andasia'),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 32),
@@ -43,7 +43,7 @@ class WeddingDetail extends StatelessWidget {
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32),
-                  child: Image.network(Asset.initialName),
+                  child: Image.asset(Asset.nameInitial),
                 )),
                 _childName("BRIDE", "Heng", "Sreyly"),
               ],
@@ -53,9 +53,9 @@ class WeddingDetail extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Which will be held from 5PM",
+                  "Which will be held on",
                   style: baseTextStyle.copyWith(
-                      fontWeight: FontWeight.w300, fontSize: 20),
+                      fontWeight: FontWeight.w600, fontSize: 20),
                 ),
                 Text(
                   "Saturday 11th, January 2025",
@@ -78,9 +78,9 @@ class WeddingDetail extends StatelessWidget {
       children: [
         Text(
           father,
-          style: baseTextStyle.copyWith(fontSize: 18),
+          style: baseTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.w600),
         ),
-        Text(mother, style: baseTextStyle.copyWith(fontSize: 18)),
+        Text(mother, style: baseTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.w600)),
       ],
     );
   }
@@ -92,19 +92,22 @@ class WeddingDetail extends StatelessWidget {
         Text(
           label,
           style: baseTextStyle.copyWith(
-              fontSize: 22, fontWeight: FontWeight.w200, color: mainColor),
+              fontSize: 20, fontWeight: FontWeight.w600, color: mainColor),
         ),
+        SizedBox(height: 16),
         Text(firstname,
             style: baseTextStyle.copyWith(
-              fontFamily: 'Andasia',
-              fontSize: 26,
-              fontWeight: FontWeight.normal,
+              fontFamily: 'Madina',
+              fontSize: 62,
+              height: 1,
+              fontWeight: FontWeight.w100,
             )),
         Text(lastname,
             style: baseTextStyle.copyWith(
-              fontFamily: 'Andasia',
-              fontSize: 26,
-              fontWeight: FontWeight.normal,
+              fontFamily: 'Madina',
+              fontSize: 62,
+              height: 1,
+              fontWeight: FontWeight.w100,
             )),
       ],
     );

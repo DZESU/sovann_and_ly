@@ -39,14 +39,14 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.cloth,
           time: "06:30 AM",
-          label: "Groom’s Processional (Hae Kon Kom Loh)",
+          label: "Groom’s Procession\n(Hae Chum Noun)",
           isRight: false,
           visible: false,
         ),
         _event(
           icon: Asset.ring,
           time: "08:15 AM",
-          label: "Ring Exchange & Honoring the Parents\n(Kat Khan Sla)",
+          label: "Ring Exchange\n& Honoring the Parents\n(Kat Khan Sla)",
           isRight: false,
           visible: true,
           index: 1,
@@ -61,7 +61,7 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.siccor,
           time: "09:35 AM",
-          label: "Hair Cutting Ritual (Kat sork)",
+          label: "Hair Cutting (Kat sork)",
           isRight: false,
           visible: true,
           index: 3,
@@ -99,7 +99,7 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.cloth,
           time: "06:30 AM",
-          label: "Groom’s Processional (Hae Kon Kom Loh)",
+          label: "Groom’s Procession\n(Hae Chum Noun)",
           isRight: true,
           visible: true,
           index: 0,
@@ -107,7 +107,7 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.ring,
           time: "08:15 AM",
-          label: "Ring Exchange & Honoring the Parents\n(Kat Khan Sla)",
+          label: "Ring Exchange\n& Honoring the Parents\n(Kat Khan Sla)",
           isRight: true,
           visible: false,
         ),
@@ -122,7 +122,7 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.siccor,
           time: "09:35 AM",
-          label: "Hair Cutting Ritual (Kat sork)",
+          label: "Hair Cutting (Kat sork)",
           isRight: true,
           visible: false,
 
@@ -181,7 +181,7 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
               ),
               Text(
                 label,
-                style: baseTextStyle.copyWith(fontWeight: FontWeight.normal),
+                style: baseTextStyle.copyWith(fontWeight: FontWeight.w600),
                 textAlign: isRight ? TextAlign.start : TextAlign.end,
               ),
             ],

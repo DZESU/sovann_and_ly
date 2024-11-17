@@ -16,7 +16,7 @@ class PhotoSection extends ConsumerStatefulWidget {
 class _PhotoSectionState extends ConsumerState<PhotoSection> {
   List<String> get images => ref.watch(imagesProvider).photosSectionUrl;
 
-  delay(int index) => Duration(milliseconds: 00 + (50 * index));
+  delay(int index) => Duration(milliseconds: 0);
 
   final animate = List.generate(6, (index) => false);
 
@@ -26,7 +26,7 @@ class _PhotoSectionState extends ConsumerState<PhotoSection> {
       children: [
         _animateWidget(
             index: 0,
-            child: FadeInUp(animate: animate[0], child: _bigImage(context, 0))),
+            child: FadeInUp(animate: animate[0], child: _bigImage(context, 4))),
         Row(
           children: [
             Expanded(
@@ -54,7 +54,7 @@ class _PhotoSectionState extends ConsumerState<PhotoSection> {
             child: ZoomIn(
                 animate: animate[4],
                 curve: Curves.easeIn,
-                child: _bigImage(context, 4))),
+                child: _bigImage(context, 0))),
         _animateWidget(
             index: 5,
             child: FadeInUp(animate: animate[5], child: _bigImage(context, 5))),
@@ -135,34 +135,41 @@ class PhotoViewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        PhotoViewGallery.builder(
-          pageController: PageController(initialPage: initialIndex),
-          scrollPhysics: const BouncingScrollPhysics(),
-          builder: (BuildContext context, int index) {
-            return PhotoViewGalleryPageOptions(
-              imageProvider: NetworkImage(images[index]),
-              heroAttributes: PhotoViewHeroAttributes(tag: images[index]),
-            );
-          },
-          itemCount: images.length,
-        ),
-        Align(
-          alignment: Alignment.topRight,
-          child: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Icon(
-                  Icons.close,
-                  color: Colors.white,
-                ),
-              )),
-        )
-      ],
+    return Dismissible(
+      key: Key("dismiss"),
+      direction: DismissDirection.down,
+      onDismissed: (_){
+        Navigator.pop(context);
+      },
+      child: Stack(
+        children: [
+          PhotoViewGallery.builder(
+            pageController: PageController(initialPage: initialIndex),
+            scrollPhysics: const BouncingScrollPhysics(),
+            builder: (BuildContext context, int index) {
+              return PhotoViewGalleryPageOptions(
+                imageProvider: NetworkImage(images[index]),
+                heroAttributes: PhotoViewHeroAttributes(tag: images[index]),
+              );
+            },
+            itemCount: images.length,
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Icon(
+                    Icons.close,
+                    color: Colors.white,
+                  ),
+                )),
+          )
+        ],
+      ),
     );
   }
 }

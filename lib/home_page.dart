@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
+import 'package:sovann_and_ly/widgets/count_time.dart';
 import 'package:sovann_and_ly/widgets/introduction.dart';
 import 'package:sovann_and_ly/widgets/name_section.dart';
 import 'package:sovann_and_ly/widgets/photo_section.dart';
@@ -54,11 +55,34 @@ class _HomePageState extends ConsumerState<HomePage> {
             silverGap,
             SliverToBoxAdapter(child: PhotoSection()),
             silverGap,
-            SliverToBoxAdapter(child: WeddingDetail()),
-            silverGap,
-            SliverToBoxAdapter(child: WeddingAgendaV2()),
+            // SliverToBoxAdapter(child: WeddingDetail()),
+            // silverGap,
+            // SliverToBoxAdapter(child: WeddingAgendaV2()),
+            SliverToBoxAdapter(
+              child: Stack(
+                alignment: Alignment(0, -.2),
+                children: [
+                  Positioned(left: -40,child: Opacity(opacity: .3,child: Image.asset(Asset.sakura1,height: 350,))),
+                  Column(
+                    children: [
+                      WeddingDetail(),
+                      SizedBox(
+                        height: 32,
+                      ),
+                      WeddingAgendaV2()
+                    ],
+                  ),
+                ],
+              ),
+            ),
             silverGap,
             SliverToBoxAdapter(child: VenueSecion()),
+            silverGap,
+            silverGap,
+            SliverToBoxAdapter(
+                child: CountdownTimer(
+              targetDateTime: DateTime(2025, 01, 11),
+            )),
             silverGap,
             silverGap,
           ],
@@ -105,13 +129,13 @@ class _SvgPulseEffectState extends State<SvgPulseEffect>
 
   @override
   Widget build(BuildContext context) {
-
     return AnimatedBuilder(
       animation: _colorAnimation,
       builder: (context, child) {
         return SvgPicture.asset(
           Asset.loading,
-          colorFilter: ColorFilter.mode(_colorAnimation.value!, BlendMode.srcIn),
+          colorFilter:
+              ColorFilter.mode(_colorAnimation.value!, BlendMode.srcIn),
           width: 150,
         );
       },

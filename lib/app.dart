@@ -9,9 +9,9 @@ import 'package:sovann_and_ly/asset.dart';
 
 import 'home_page.dart';
 
-final baseTextStyle = GoogleFonts.cormorantGaramond();
+final baseTextStyle = GoogleFonts.cormorantGaramond(color: Color(0xFF954840));
 // final mainColor = Colors.green;
-final mainColor = Color(0xFFa586a6);
+final mainColor = Color(0xFFBB0083);
 
 class App extends ConsumerStatefulWidget {
   const App({super.key});
@@ -21,7 +21,6 @@ class App extends ConsumerStatefulWidget {
 }
 
 class _AppState extends ConsumerState<App> {
-
   @override
   void initState() {
     super.initState();
@@ -33,6 +32,7 @@ class _AppState extends ConsumerState<App> {
     return ScreenUtilInit(
       builder: (context, child) {
         return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           routerConfig: _router,
         );
       },
@@ -59,6 +59,7 @@ class ImageViewModel extends ChangeNotifier {
   final introSectionUrl = [
     Asset.weedLeft,
     Asset.weedRight,
+    Asset.sakura3,
     Asset.introductionMain,
   ];
 
@@ -89,7 +90,7 @@ class ImageViewModel extends ChangeNotifier {
   // Map<String, List> _images = {};
   Completer<void> _imagesLoadedCompleter = Completer();
 
-  bool get isImagesLoaded{
+  bool get isImagesLoaded {
     return _imagesLoadedCompleter.isCompleted;
   }
 
