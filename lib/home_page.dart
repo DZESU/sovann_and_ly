@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
 import 'package:sovann_and_ly/widgets/count_time.dart';
 import 'package:sovann_and_ly/widgets/introduction.dart';
+import 'package:sovann_and_ly/widgets/message_section.dart';
 import 'package:sovann_and_ly/widgets/name_section.dart';
 import 'package:sovann_and_ly/widgets/photo_section.dart';
 import 'package:sovann_and_ly/widgets/venue_secion.dart';
@@ -84,6 +86,10 @@ class _HomePageState extends ConsumerState<HomePage> {
               targetDateTime: DateTime(2025, 01, 11),
             )),
             silverGap,
+            if(widget.name?.isEmpty == true || kDebugMode)
+            SliverToBoxAdapter(child: MessageSection(username: widget.name ?? 'god',)),
+            silverGap,
+            SliverToBoxAdapter(child: Center(child: Text("Thank you",style: titleTextStyle.copyWith(fontSize: 15),)),),
             silverGap,
           ],
         ),

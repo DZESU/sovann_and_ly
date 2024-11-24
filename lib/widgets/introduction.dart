@@ -29,7 +29,7 @@ class _IntroductionState extends State<Introduction> {
           Positioned(
               top: 0,
               right: -20,
-              child: SizedBox(width: 140, child: decorRight)),
+              child: SizedBox(width: 140, child: Opacity(opacity: .5,child: decorRight))),
           SizedBox(
               // height: 1.sh,
               child: Column(
@@ -39,10 +39,10 @@ class _IntroductionState extends State<Introduction> {
               SizedBox(height: 32),
               Text(
                 "Wedding Invitation",
-                style: baseTextStyle.copyWith(
-                    fontSize: 40, fontFamily: "Andasia"),
+                style: titleTextStyle,
               ),
               SizedBox(height: 24),
+              if(name.isNotEmpty)
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +87,7 @@ class _IntroductionState extends State<Introduction> {
               SizedBox(height: 24),
               FadeInUp(
                   delay: Duration(seconds: 1),
-                  child: Image.network(Asset.introductionMain)),
+                  child: Image.asset(Asset.introductionMain)),
             ],
           )),
           Positioned(

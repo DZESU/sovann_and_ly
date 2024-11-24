@@ -5,11 +5,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'package:recase/recase.dart';
 import 'package:sovann_and_ly/asset.dart';
 
 import 'home_page.dart';
 
 final baseTextStyle = GoogleFonts.cormorantGaramond(color: Color(0xFF954840));
+final titleTextStyle =
+    TextStyle(fontFamily: 'Batusa', fontSize: 36, color: Color(0xFF954840));
 // final mainColor = Colors.green;
 final mainColor = Color(0xFFBB0083);
 
@@ -29,13 +33,19 @@ class _AppState extends ConsumerState<App> {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      builder: (context, child) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routerConfig: _router,
-        );
-      },
+    return KeyboardDismisser(
+      child: ScreenUtilInit(
+        builder: (context, child) {
+          return MaterialApp.router(
+            theme: ThemeData.light().copyWith(
+                primaryColor: mainColor,
+                indicatorColor: mainColor,
+                primaryColorLight: mainColor),
+            debugShowCheckedModeBanner: false,
+            routerConfig: _router,
+          );
+        },
+      ),
     );
   }
 }
@@ -128,7 +138,7 @@ final _router = GoRouter(
       builder: (context, state) {
         print(state.uri);
         return HomePage(
-          name: state.uri.queryParameters["name"],
+          name: state.uri.queryParameters["name"]?.titleCase,
         );
       },
     ),

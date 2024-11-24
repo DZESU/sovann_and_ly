@@ -57,7 +57,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
     final calenderUrl = "https://calendar.app.google/JPAdt5ugE6W4Hepc6";
 
     Widget _field(String label, int value) {
-      final style = TextStyle(fontSize: 16.sp);
+      final style = baseTextStyle.copyWith(fontSize: 16.sp);
       final labelStyle = GoogleFonts.bonheurRoyale(fontSize: 16.sp);
       return Column(
         children: [
@@ -78,8 +78,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
       children: [
         Text(
           "Our Wedding",
-          style: baseTextStyle.copyWith(
-              fontSize: 40, fontFamily: "Andasia"),
+          style: titleTextStyle,
         ),
         SizedBox(height: 16.h),
         Row(

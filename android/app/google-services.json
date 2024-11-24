@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "17558236151",
+    "project_id": "wedding-4928e",
+    "storage_bucket": "wedding-4928e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17558236151:android:166f35d763fccf903fdcf2",
+        "android_client_info": {
+          "package_name": "dev.sovann.sovann_and_ly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc4VyxG9RfIGOTkSwKjeO03ZQF1DBC2fc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

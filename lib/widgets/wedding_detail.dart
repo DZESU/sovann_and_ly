@@ -15,10 +15,15 @@ class WeddingDetail extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Wedding Detail",
-              style: baseTextStyle.copyWith(
-                  fontSize: 36, fontFamily: 'Andasia'),
+              "Wedding Details",
+              style: titleTextStyle,
               textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 8),
+            Text(
+              "PARENTS",
+              style: baseTextStyle.copyWith(
+                  fontSize: 20, fontWeight: FontWeight.w600, color: mainColor),
             ),
             SizedBox(height: 32),
             Row(
@@ -60,8 +65,9 @@ class WeddingDetail extends StatelessWidget {
                 Text(
                   "Saturday 11th, January 2025",
                   style: baseTextStyle.copyWith(
-                    color: mainColor,
-                      fontWeight: FontWeight.bold, fontSize: 28),
+                      color: mainColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28),
                 ),
               ],
             ),
@@ -73,14 +79,19 @@ class WeddingDetail extends StatelessWidget {
 
   Widget _parentName(
       String father, String mother, CrossAxisAlignment crossAxisAlignment) {
+    final style =
+        baseTextStyle.copyWith(fontSize: 20, fontWeight: FontWeight.w600);
     return Column(
       crossAxisAlignment: crossAxisAlignment,
       children: [
         Text(
           father,
-          style: baseTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+          style: style,
         ),
-        Text(mother, style: baseTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.w600)),
+        Text(
+          mother,
+          style: style,
+        ),
       ],
     );
   }

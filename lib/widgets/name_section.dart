@@ -50,8 +50,7 @@ class _NameSectionState extends State<NameSection> {
                   delay: Duration(milliseconds: 500),
                   child: Text(
                     "The Wedding Of",
-                    style: baseTextStyle.copyWith(
-                        fontSize: 36, fontFamily: 'Andasia'),
+                    style: titleTextStyle,
                   ),
                 ),
               ),

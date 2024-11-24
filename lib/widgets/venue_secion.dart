@@ -23,8 +23,7 @@ class VenueSecion extends StatelessWidget {
         // ),
         Text(
           "Wedding Location",
-          style: baseTextStyle.copyWith(
-              fontSize: 40, fontFamily: "Andasia"),
+          style: titleTextStyle,
         ),
         SizedBox(height: 16.h),
         SvgPicture.asset(Asset.mapSvg),
