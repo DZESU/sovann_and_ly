@@ -1,7 +1,7 @@
 class Asset{
   Asset._();
-  // static const String introductionMain = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/photo/intro_main.png";
-  static const String introductionMain = "assets/photo/intro_main.png";
+  static const String introductionMain = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/photo/intro_main.png";
+  // static const String introductionMain = "assets/photo/intro_main.png";
   // static const String introBg = "assets/decor/bg.png";
   // static const String weed = "assets/decor/weed.png";
   // static const String cotton = "assets/decor/cotton.png";
@@ -21,12 +21,10 @@ class Asset{
   static const String mainBg = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/main_bg.webp";
   static const String sakura = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/sakura.webp";
   static const String loading = "assets/decor/loading.svg";
-  static const String smokeHearth = "assets/decor/smoke_hearh.webp";
-  static const String sakura1 = "assets/decor/sakura1.png";
-  static const String sakura2 = "assets/decor/sakura2.png";
+  static const String sakura1 = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/sakura1.png";
   static const String sakura3 = "https://media-public.canva.com/xNZA4/MAFJ32xNZA4/1/t.png";
   static const String mapSvg = "assets/decor/map.svg";
-  static const String nameInitial = "assets/decor/name_intial.png";
+  static const String nameInitial = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/name_intial.png";
 
 
 }

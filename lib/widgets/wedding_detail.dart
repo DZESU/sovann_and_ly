@@ -48,7 +48,7 @@ class WeddingDetail extends StatelessWidget {
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32),
-                  child: Image.asset(Asset.nameInitial),
+                  child: Image.network(Asset.nameInitial),
                 )),
                 _childName("BRIDE", "Heng", "Sreyly"),
               ],

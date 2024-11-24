@@ -70,6 +70,8 @@ class ImageViewModel extends ChangeNotifier {
     Asset.weedLeft,
     Asset.weedRight,
     Asset.sakura3,
+    Asset.sakura1,
+    Asset.nameInitial,
     Asset.introductionMain,
   ];
 

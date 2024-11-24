@@ -33,6 +33,7 @@ class _PhotoSectionState extends ConsumerState<PhotoSection> {
                 child: _animateWidget(
                     index: 1,
                     child: FadeInLeftBig(
+                      duration: Duration(milliseconds: 800),
                         animate: animate[1],
                         curve: Curves.easeIn,
                         child: _smallImage(context, 3)))),
@@ -40,6 +41,7 @@ class _PhotoSectionState extends ConsumerState<PhotoSection> {
                 child: _animateWidget(
                     index: 2,
                     child: FadeInRightBig(
+                        duration: Duration(milliseconds: 800),
                         animate: animate[2],
                         curve: Curves.easeIn,
                         child: _smallImage(context, 2)))),
@@ -48,7 +50,7 @@ class _PhotoSectionState extends ConsumerState<PhotoSection> {
         _animateWidget(
             index: 3,
             child:
-                FadeInUpBig(animate: animate[3], child: _bigImage(context, 1))),
+                FadeInUpBig(duration: Duration(milliseconds: 800),animate: animate[3], child: _bigImage(context, 1))),
         _animateWidget(
             index: 4,
             child: ZoomIn(

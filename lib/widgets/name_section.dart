@@ -77,7 +77,7 @@ class _NameSectionState extends State<NameSection> {
                       //             width: 150))),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 28),
-                        child: Image.asset(
+                        child: Image.network(
                           Asset.nameInitial,
                           height: 300,
                         ),

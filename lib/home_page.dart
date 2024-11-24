@@ -64,7 +64,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               child: Stack(
                 alignment: Alignment(0, -.2),
                 children: [
-                  Positioned(left: -40,child: Opacity(opacity: .3,child: Image.asset(Asset.sakura1,height: 350,))),
+                  Positioned(left: -40,child: Opacity(opacity: .3,child: Image.network(Asset.sakura1,height: 350,))),
                   Column(
                     children: [
                       WeddingDetail(),
