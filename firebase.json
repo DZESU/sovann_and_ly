@@ -3,47 +3,67 @@
     "platforms": {
       "android": {
         "default": {
-          "projectId": "wedding-4928e",
-          "appId": "1:17558236151:android:166f35d763fccf903fdcf2",
+          "projectId": "sovann-sreyly-wedding",
+          "appId": "1:573399434401:android:91e60e74899fae7ccbdce0",
           "fileOutput": "android/app/google-services.json"
         }
       },
       "ios": {
         "default": {
-          "projectId": "wedding-4928e",
-          "appId": "1:17558236151:ios:3f20d24e7c31a8b63fdcf2",
+          "projectId": "sovann-sreyly-wedding",
+          "appId": "1:573399434401:ios:1ff79c462f0259b5cbdce0",
           "uploadDebugSymbols": false,
           "fileOutput": "ios/Runner/GoogleService-Info.plist"
         }
       },
       "macos": {
         "default": {
-          "projectId": "wedding-4928e",
-          "appId": "1:17558236151:ios:3f20d24e7c31a8b63fdcf2",
+          "projectId": "sovann-sreyly-wedding",
+          "appId": "1:573399434401:ios:1ff79c462f0259b5cbdce0",
           "uploadDebugSymbols": false,
           "fileOutput": "macos/Runner/GoogleService-Info.plist"
         }
       },
       "dart": {
         "lib/firebase_options.dart": {
-          "projectId": "wedding-4928e",
+          "projectId": "sovann-sreyly-wedding",
           "configurations": {
-            "android": "1:17558236151:android:166f35d763fccf903fdcf2",
-            "ios": "1:17558236151:ios:3f20d24e7c31a8b63fdcf2",
-            "macos": "1:17558236151:ios:3f20d24e7c31a8b63fdcf2",
-            "web": "1:17558236151:web:d7233b782d0452da3fdcf2",
-            "windows": "1:17558236151:web:aa65421e5d04b11c3fdcf2"
+            "android": "1:573399434401:android:91e60e74899fae7ccbdce0",
+            "ios": "1:573399434401:ios:1ff79c462f0259b5cbdce0",
+            "macos": "1:573399434401:ios:1ff79c462f0259b5cbdce0",
+            "web": "1:573399434401:web:10b1cf471b75c031cbdce0",
+            "windows": "1:573399434401:web:da2e690d99b6e6cacbdce0"
           }
         }
       }
     }
   },
   "hosting": {
-    "public": "build/web",
+    "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "*",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ],
+    "frameworksBackend": {
+      "region": "asia-east1"
+    }
   }
 }

@@ -51,7 +51,7 @@ flutter:
     - assets/decor/sakura1.png
     - assets/decor/sakura2.png
     - assets/decor/map.svg
-    - assets/decor/name_intial.png
+#    - assets/decor/name_intial.png
 #    - assets/photo/intro_main.png
 #    - assets/images/
 

@@ -1,4 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:sovann_and_ly/asset.dart';
+
+
+
+
+class NameLogo extends StatelessWidget {
+  const NameLogo({super.key, this.height});
+
+  final double? height;
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        RotatingImage(child: Image.network(Asset.nameInitialBg, height: height,)),
+        Positioned.fill(child: Padding(
+          padding:  EdgeInsets.symmetric(vertical: (height??0) * 0.2),
+          child: Image.network(Asset.nameInitial),
+        )),
+      ],
+    );
+  }
+}
+
 
 class RotatingImage extends StatefulWidget {
 

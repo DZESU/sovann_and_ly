@@ -72,12 +72,7 @@ class _NameSectionState extends State<NameSection> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(bottom: 28),
-                        child: RotatingImage(
-                          child: Image.network(
-                            Asset.nameInitial,
-                            height: 300,
-                          ),
-                        ),
+                        child: NameLogo(height: 300,)
                       ),
                     ],
                   ),
