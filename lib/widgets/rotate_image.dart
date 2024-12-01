@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:sovann_and_ly/asset.dart';
 
-
-
-
 class NameLogo extends StatelessWidget {
   const NameLogo({super.key, this.height});
 
   final double? height;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        RotatingImage(child: Image.network(Asset.nameInitialBg, height: height,)),
-        Positioned.fill(child: Padding(
-          padding:  EdgeInsets.symmetric(vertical: (height??0) * 0.2),
-          child: Image.network(Asset.nameInitial),
+        RotatingImage(
+            child: Image.network(
+          Asset.nameInitialBg,
+          height: height,
         )),
+        Image.network(Asset.nameInitial, height: height),
       ],
     );
   }
 }
 
-
 class RotatingImage extends StatefulWidget {
-
   final Widget child;
+
   const RotatingImage({
     Key? key,
     required this.child,
@@ -44,7 +42,7 @@ class _RotatingImageState extends State<RotatingImage>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 10), // Duration of one full rotation
+      duration: const Duration(seconds: 60), // Duration of one full rotation
       vsync: this,
     )..repeat(); // Start the animation and loop continuously
   }
@@ -58,14 +56,13 @@ class _RotatingImageState extends State<RotatingImage>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        return Transform.rotate(
-          angle: _controller.value * 2.0 * 3.141592653589793, // Full rotation
-          child: child,
-        );
-      },
-      child: widget.child
-    );
+        animation: _controller,
+        builder: (context, child) {
+          return Transform.rotate(
+            angle: _controller.value * 2.0 * 3.141592653589793, // Full rotation
+            child: child,
+          );
+        },
+        child: widget.child);
   }
 }

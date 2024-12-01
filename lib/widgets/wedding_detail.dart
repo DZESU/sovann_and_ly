@@ -1,10 +1,20 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
+import 'package:sovann_and_ly/widgets/rotate_image.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
-class WeddingDetail extends StatelessWidget {
+class WeddingDetail extends StatefulWidget {
   const WeddingDetail({super.key});
+
+  @override
+  State<WeddingDetail> createState() => _WeddingDetailState();
+}
+
+class _WeddingDetailState extends State<WeddingDetail> {
+  bool _titleAnimate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +30,19 @@ class WeddingDetail extends StatelessWidget {
               style: titleTextStyle,
               textAlign: TextAlign.center,
             ),
+            VisibilityDetector(
+                onVisibilityChanged: (value) {
+                  setState(() {
+                    _titleAnimate = true;
+                  });
+                },
+                key: Key("Wedding Details"),
+                child: Transform.scale(
+                    scale: 2.5,
+                    child: SizedBox(
+                        height: 50,
+                        child: Lottie.asset(Asset.decorLine,
+                            repeat: false, animate: _titleAnimate)))),
             SizedBox(height: 8),
             Text(
               "PARENTS",
@@ -51,10 +74,9 @@ class WeddingDetail extends StatelessWidget {
                   flex: 2,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Image.network(
-                    Asset.nameInitial,
-                    width: 150,
-                  ),
+                    child: NameLogo(
+                      height: null,
+                    ),
                   ),
                 ),
                 Expanded(child: _childName("BRIDE", "Heng", "Sreyly")),
@@ -69,12 +91,24 @@ class WeddingDetail extends StatelessWidget {
                   style: baseTextStyle.copyWith(
                       fontWeight: FontWeight.w600, fontSize: 20),
                 ),
-                Text(
-                  "Saturday 11th, January 2025",
+                Text.rich(
+                  TextSpan(text: "Saturday ", children: [
+                    TextSpan(text: "11", style: baseTextStyle.copyWith(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 26,
+                        fontFamily: 'Batusa',
+                        color: mainColor),),
+                    TextSpan(text: "th, January "),
+                    TextSpan(text: "2025", style: baseTextStyle.copyWith(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 22,
+                        fontFamily: 'Batusa',
+                        color: mainColor)),
+                  ]),
                   style: baseTextStyle.copyWith(
-                      color: mainColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 28),
+                      fontSize: 28,
+                      color: mainColor),
                 ),
               ],
             ),
@@ -119,8 +153,8 @@ class WeddingDetail extends StatelessWidget {
             textAlign: TextAlign.center,
             style: nameTextStyle.copyWith(
               fontSize: 62,
-              height: 1,
-              fontWeight: FontWeight.w100,
+              height: 1.2,
+              // fontWeight: FontWeight.w100,
             )),
         // AutoSizeText(lastname,
         //     maxLines: 1,

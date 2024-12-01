@@ -3,6 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recase/recase.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
@@ -41,6 +42,7 @@ class _IntroductionState extends State<Introduction> {
                 "Wedding Invitation",
                 style: titleTextStyle,
               ),
+              Transform.scale(scale: 2.5,child: SizedBox(height: 50,child: Lottie.asset(Asset.decorLine, repeat: false, animate: true))),
               SizedBox(height: 24),
               if(name.isNotEmpty)
               Row(

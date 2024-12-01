@@ -17,8 +17,8 @@ final baseTextStyle = GoogleFonts.cormorantGaramond(color: Color(0xFF954840));
 final titleTextStyle = GoogleFonts.parisienne().copyWith(
     fontSize: 40, color: Color(0xFF954840), fontWeight: FontWeight.w600);
 final nameTextStyle = TextStyle(
-  fontFamily: "HelloGraduationScript-PKR3P",
-  fontWeight: FontWeight.w600,
+  fontFamily: "HapshaSophiaScript-e91Yl",
+  // fontWeight: FontWeight.w600,
   color: Color(0xFF954840),
 );
 // final mainColor = Colors.green;

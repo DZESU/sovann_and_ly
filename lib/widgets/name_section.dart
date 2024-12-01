@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/debug_box.dart';
 import 'package:sovann_and_ly/widgets/rotate_image.dart';
@@ -55,6 +56,12 @@ class _NameSectionState extends State<NameSection> {
                   ),
                 ),
               ),
+              Transform.scale(
+                  scale: 2.5,
+                  child: SizedBox(
+                      height: 50,
+                      child: Lottie.asset(Asset.decorLine,
+                          repeat: false, animate: _titleAnimate))),
               SizedBox(height: 50),
               VisibilityDetector(
                 key: Key('name_section_logo'),
@@ -71,9 +78,10 @@ class _NameSectionState extends State<NameSection> {
                     alignment: Alignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 28),
-                        child: NameLogo(height: 300,)
-                      ),
+                          padding: const EdgeInsets.only(bottom: 28),
+                          child: NameLogo(
+                            height: 300,
+                          )),
                     ],
                   ),
                 ),
@@ -91,13 +99,32 @@ class _NameSectionState extends State<NameSection> {
                 style: baseTextStyle.copyWith(
                     fontWeight: FontWeight.w300, fontSize: 20),
               ),
-              Text(
-                "Saturday 11th, January 2025",
+              Text.rich(
+                TextSpan(text: "Saturday ", children: [
+                  TextSpan(text: "11", style: baseTextStyle.copyWith(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 26,
+                      fontFamily: 'Batusa',
+                      color: mainColor),),
+                  TextSpan(text: "th, January "),
+                  TextSpan(text: "2025", style: baseTextStyle.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22,
+                      fontFamily: 'Batusa',
+                      color: mainColor)),
+                ]),
                 style: baseTextStyle.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 28,
                     color: mainColor),
               ),
+              // Text(
+              //   "Saturday 11th, January 2025",
+              //   style: baseTextStyle.copyWith(
+              //       fontWeight: FontWeight.bold,
+              //       fontSize: 28,
+              //       color: mainColor),
+              // ),
             ],
           ),
         ],
@@ -116,9 +143,8 @@ class _NameSectionState extends State<NameSection> {
         Text(
           value,
           style: nameTextStyle.copyWith(
-            fontSize: 62,
-            height: 1,
-            // fontWeight: FontWeight.w100,
+            fontSize: 52,
+            height: 1.2,
           ),
           textAlign: TextAlign.center,
         ),

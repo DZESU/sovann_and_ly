@@ -53,7 +53,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     } else {
       child = _mobile(context);
     }
-    final body = viewModel.isImagesLoaded  ? child : _loading(context);
+    final body = viewModel.isImagesLoaded ? child : _loading(context);
     // final body =  _loading(context);
 
     return Scaffold(body: Opacity(opacity: 1, child: body));
@@ -110,9 +110,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   Column(
                     children: [
                       WeddingDetail(),
-                      SizedBox(
-                        height: 32,
-                      ),
+                      SizedBox(height: 32),
                       WeddingAgendaV2()
                     ],
                   ),
@@ -137,8 +135,9 @@ class _HomePageState extends ConsumerState<HomePage> {
             SliverToBoxAdapter(
               child: Center(
                   child: Text(
-                "Thank you",
-                style: titleTextStyle.copyWith(fontSize: 15),
+                "We are waiting to see you at our wedding.\nThank you!",
+                textAlign: TextAlign.center,
+                style: titleTextStyle.copyWith(fontSize: 25),
               )),
             ),
             silverGap,
@@ -169,10 +168,12 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   Widget _loading(BuildContext context) {
-    return Center(child: Column(
+    return Center(
+        child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Lottie.asset(Asset.heartLoading, width: 200, decoder: LottieComposition.decodeGZip),
+        Lottie.asset(Asset.heartLoading,
+            width: 200, decoder: LottieComposition.decodeGZip),
         SizedBox(height: 6),
         SvgPulseEffect(),
       ],

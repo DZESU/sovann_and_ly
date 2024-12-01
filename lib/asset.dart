@@ -27,6 +27,7 @@ class Asset{
   static const String nameInitial = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/name_inital.png";
   static const String nameInitialBg = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/name_inital_bg.png";
   static const String heartLoading = "assets/lotties/heart_loading.json";
+  static const String decorLine = "assets/lotties/decor_line.json";
 
 
 }

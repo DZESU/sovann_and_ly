@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:appwrite/appwrite.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -60,9 +61,11 @@ class _MessageSectionState extends State<MessageSection> {
     } catch (e, s) {
       print(e);
       debugPrintStack(stackTrace: s);
-      ScaffoldMessenger.of(context).showSnackBar(
+      if(kDebugMode) {
+        ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to save data: $e')),
       );
+      }
     }
   }
 
