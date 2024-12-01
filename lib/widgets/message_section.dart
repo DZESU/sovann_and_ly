@@ -1,8 +1,13 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
+import 'package:appwrite/appwrite.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:sovann_and_ly/app.dart'; // For date formatting
+import 'package:sovann_and_ly/app.dart';
+import 'package:sovann_and_ly/firebase_options.dart'; // For date formatting
 
 class MessageSection extends StatefulWidget {
   final String username;
@@ -15,37 +20,71 @@ class MessageSection extends StatefulWidget {
 
 class _MessageSectionState extends State<MessageSection> {
   final TextEditingController _controller = TextEditingController();
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final Client _client = Client();
+  late final Databases _databases;
 
-  Future<void> _saveToFirestore(String text) async {
-    if (text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Text cannot be empty!")),
-      );
-      return;
-    }
+  // Replace these with your AppWrite details
+  final String _endpoint = 'https://cloud.appwrite.io/v1';
+  final String _projectId = '674b3cc10020b36635dc';
+  final String _databaseId = '674b3d0b001f90145af7';
+  final String _collectionId = '674b3dc40003c72fd5e3';
+  List<Map<String, dynamic>> _messages = [];
 
+  @override
+  void initState() {
+    super.initState();
+    _client
+        .setEndpoint(_endpoint) // Set your API Endpoint
+        .setProject(_projectId); // Set your project ID
+    _databases = Databases(_client);
+    _fetchMessages();
+  }
+
+  Future<void> _saveData(String text) async {
     try {
-      await _firestore.collection('messages').add({
-        'username': widget.username,
-        'content': text,
-        'timestamp': FieldValue.serverTimestamp(),
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Message saved!")),
+      await _databases.createDocument(
+        databaseId: _databaseId,
+        collectionId: _collectionId,
+        documentId: 'unique()', // Use 'unique()' to generate an ID
+        data: {
+          'message': text,
+          'name': widget.username,
+          'timestamp': _formatTimestamp(DateTime.now())
+        }, // The data to save
       );
-      _controller.clear();
-    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to save: $e")),
+        SnackBar(content: Text('Data saved successfully!')),
+      );
+      _fetchMessages();
+      _controller.clear(); // Clear the input field
+    } catch (e, s) {
+      print(e);
+      debugPrintStack(stackTrace: s);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to save data: $e')),
       );
     }
   }
 
-  String _formatTimestamp(Timestamp? timestamp) {
-    if (timestamp == null) return "N/A";
-    final DateTime dateTime = timestamp.toDate();
+  String _formatTimestamp(DateTime? dateTime) {
+    if (dateTime == null) return "N/A";
     return DateFormat('yyyy/MM/dd').add_jm().format(dateTime);
+  }
+
+  Future<void> _fetchMessages() async {
+    try {
+      final response = await _databases.listDocuments(
+        databaseId: _databaseId,
+        collectionId: _collectionId,
+      );
+      setState(() {
+        _messages = response.documents.map((doc) => doc.data).toList();
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to fetch messages: $e')),
+      );
+    }
   }
 
   @override
@@ -63,64 +102,49 @@ class _MessageSectionState extends State<MessageSection> {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: "Wishes for us 💕",
-                      // suffixIcon: IconButton(
-                      //   icon: Icon(Icons.send),
-                      //   onPressed: () => _saveToFirestore(_controller.text),
-                      // ),
                     ),
                   ),
                 ),
                 SizedBox(width: 10),
                 ElevatedButton(
-                  onPressed: () => _saveToFirestore(_controller.text),
-                  child: Center(child: Icon(Symbols.favorite,fill: 1,color: mainColor,)),
-                  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                  onPressed: () => _saveData(_controller.text),
+                  child: Center(
+                      child: Icon(
+                    Symbols.favorite,
+                    fill: 1,
+                    color: mainColor,
+                  )),
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8))),
                 )
               ],
             ),
           ),
           SizedBox(height: 10),
-          StreamBuilder<QuerySnapshot>(
-            stream: _firestore
-                .collection('messages')
-                .orderBy('timestamp', descending: true)
-                .snapshots(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
-              }
+          ListView.builder(
+            padding: EdgeInsets.zero,
+            itemCount: _messages.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              final message = _messages[index];
+              final content = message['message'] ?? "N/A";
+              final username = message['name'] ?? "Anonymous";
+              final timestamp = message['timestamp'];
 
-              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                return Center(child: Text("No messages found."));
-              }
-
-              final messages = snapshot.data!.docs;
-
-              return ListView.builder(
-                padding: EdgeInsets.zero,
-                itemCount: messages.length,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final message = messages[index];
-                  final content = message['content'] ?? "N/A";
-                  final username = message['username'] ?? "Anonymous";
-                  final timestamp = message['timestamp'] as Timestamp?;
-
-                  return ListTile(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 4),
-                    title: Text("$username • ${_formatTimestamp(timestamp)}",
-                        style: TextStyle(
-                            fontSize: 14, color: Colors.black.withOpacity(.6))),
-                    subtitle: Text(
-                      content,
-                      style: baseTextStyle.copyWith(fontSize: 18),
-                    ),
-                  );
-                },
+              return ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 4),
+                title: Text("$username • ${(timestamp)}",
+                    style: TextStyle(
+                        fontSize: 14, color: Colors.black.withOpacity(.6))),
+                subtitle: Text(
+                  content,
+                  style: baseTextStyle.copyWith(fontSize: 18),
+                ),
               );
             },
-          ),
+          )
         ],
       ),
     );

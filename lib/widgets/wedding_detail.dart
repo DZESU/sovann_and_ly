@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
@@ -43,14 +44,20 @@ class WeddingDetail extends StatelessWidget {
             ),
             SizedBox(height: 60),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _childName("GROOM", "Pory", "Sovann"),
+                Expanded(child: _childName("GROOM", "Pory", "Sovann")),
                 Expanded(
-                    child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 32),
-                  child: Image.network(Asset.nameInitial),
-                )),
-                _childName("BRIDE", "Heng", "Sreyly"),
+                  flex: 2,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: Image.network(
+                    Asset.nameInitial,
+                    width: 150,
+                  ),
+                  ),
+                ),
+                Expanded(child: _childName("BRIDE", "Heng", "Sreyly")),
               ],
             ),
             SizedBox(height: 60),
@@ -100,26 +107,29 @@ class WeddingDetail extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
+        AutoSizeText(
           label,
+          maxLines: 1,
           style: baseTextStyle.copyWith(
               fontSize: 20, fontWeight: FontWeight.w600, color: mainColor),
         ),
         SizedBox(height: 16),
-        Text(firstname,
-            style: baseTextStyle.copyWith(
-              fontFamily: 'Madina',
+        AutoSizeText("$firstname\n$lastname",
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            style: nameTextStyle.copyWith(
               fontSize: 62,
               height: 1,
               fontWeight: FontWeight.w100,
             )),
-        Text(lastname,
-            style: baseTextStyle.copyWith(
-              fontFamily: 'Madina',
-              fontSize: 62,
-              height: 1,
-              fontWeight: FontWeight.w100,
-            )),
+        // AutoSizeText(lastname,
+        //     maxLines: 1,
+        //     style: baseTextStyle.copyWith(
+        //       fontFamily: 'Madina',
+        //       fontSize: 62,
+        //       height: 1,
+        //       fontWeight: FontWeight.w100,
+        //     )),
       ],
     );
   }

@@ -1,10 +1,13 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
+import 'package:sovann_and_ly/debug_box.dart';
 import 'package:sovann_and_ly/widgets/count_time.dart';
 import 'package:sovann_and_ly/widgets/introduction.dart';
 import 'package:sovann_and_ly/widgets/message_section.dart';
@@ -30,15 +33,47 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  // final carouselController = CarouselSliderController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      // carouselController.startAutoPlay();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final viewModel = ref.watch(imagesProvider);
-    final body = viewModel.isImagesLoaded ? _body(context) : _loading(context);
-    // final body = _loading(context);
-    return Scaffold(body: body);
+    final screenWidth = MediaQuery.of(context).size.width;
+    Widget child;
+    if (screenWidth > 500) {
+      child = _web(context);
+    } else {
+      child = _mobile(context);
+    }
+    final body = viewModel.isImagesLoaded  ? child : _loading(context);
+    // final body =  _loading(context);
+
+    return Scaffold(body: Opacity(opacity: 1, child: body));
   }
 
-  Widget _body(BuildContext context) {
+  Widget _web(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(flex: 4, child: _photoViews(context)),
+        Expanded(flex: 2, child: _mobile(context)),
+      ],
+    );
+  }
+
+  Widget _mobile(BuildContext context) {
+    return _mainView(context);
+  }
+
+  Widget _mainView(BuildContext context) {
+    // return MessageSection(username: "Hello");
     final silverGap =
         SliverPadding(padding: EdgeInsets.symmetric(vertical: 16));
     return Stack(
@@ -64,7 +99,14 @@ class _HomePageState extends ConsumerState<HomePage> {
               child: Stack(
                 alignment: Alignment(0, -.2),
                 children: [
-                  Positioned(left: -40,child: Opacity(opacity: .3,child: Image.network(Asset.sakura1,height: 350,))),
+                  Positioned(
+                      left: -40,
+                      child: Opacity(
+                          opacity: .3,
+                          child: Image.network(
+                            Asset.sakura1,
+                            height: 350,
+                          ))),
                   Column(
                     children: [
                       WeddingDetail(),
@@ -86,10 +128,19 @@ class _HomePageState extends ConsumerState<HomePage> {
               targetDateTime: DateTime(2025, 01, 11),
             )),
             silverGap,
-            if(widget.name?.isEmpty == true || kDebugMode)
-            SliverToBoxAdapter(child: MessageSection(username: widget.name ?? 'god',)),
+            // if(widget.name?.isEmpty == true || kDebugMode)
+            SliverToBoxAdapter(
+                child: MessageSection(
+              username: widget.name ?? 'god',
+            )),
             silverGap,
-            SliverToBoxAdapter(child: Center(child: Text("Thank you",style: titleTextStyle.copyWith(fontSize: 15),)),),
+            SliverToBoxAdapter(
+              child: Center(
+                  child: Text(
+                "Thank you",
+                style: titleTextStyle.copyWith(fontSize: 15),
+              )),
+            ),
             silverGap,
           ],
         ),
@@ -97,8 +148,35 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
   }
 
+  Widget _photoViews(BuildContext context) {
+    final viewModel = ref.watch(imagesProvider);
+
+    return CarouselSlider(
+      options: CarouselOptions(
+        autoPlay: true,
+        aspectRatio: 1,
+        viewportFraction: 1,
+        autoPlayAnimationDuration: Duration(seconds: 1),
+      ),
+      // carouselController: carouselController,
+      items: viewModel.photosSectionUrl.map((url) {
+        return Image.network(
+          url,
+          fit: BoxFit.cover,
+        );
+      }).toList(),
+    );
+  }
+
   Widget _loading(BuildContext context) {
-    return Center(child: SvgPulseEffect());
+    return Center(child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Lottie.asset(Asset.heartLoading, width: 200, decoder: LottieComposition.decodeGZip),
+        SizedBox(height: 6),
+        SvgPulseEffect(),
+      ],
+    ));
   }
 }
 

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "17558236151",
-    "project_id": "wedding-4928e",
-    "storage_bucket": "wedding-4928e.firebasestorage.app"
+    "project_number": "573399434401",
+    "project_id": "sovann-sreyly-wedding",
+    "storage_bucket": "sovann-sreyly-wedding.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:17558236151:android:166f35d763fccf903fdcf2",
+        "mobilesdk_app_id": "1:573399434401:android:91e60e74899fae7ccbdce0",
         "android_client_info": {
           "package_name": "dev.sovann.sovann_and_ly"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBc4VyxG9RfIGOTkSwKjeO03ZQF1DBC2fc"
+          "current_key": "AIzaSyBzI1srGZp7IY1LNfYU82eYNhclp9XAtuA"
         }
       ],
       "services": {

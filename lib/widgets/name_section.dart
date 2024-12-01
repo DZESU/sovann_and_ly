@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/debug_box.dart';
+import 'package:sovann_and_ly/widgets/rotate_image.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../asset.dart';
@@ -69,31 +70,27 @@ class _NameSectionState extends State<NameSection> {
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      // Opacity(
-                      //     opacity: .3,
-                      //     child: Transform.scale(
-                      //         scale: 2,
-                      //         child: Image.asset(Asset.smokeHearth,
-                      //             width: 150))),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 28),
-                        child: Image.network(
-                          Asset.nameInitial,
-                          height: 300,
+                        child: RotatingImage(
+                          child: Image.network(
+                            Asset.nameInitial,
+                            height: 300,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 32),
+              SizedBox(height: 2),
               Row(
                 children: [
                   Expanded(child: _name("Groom", "Pory\nSovann")),
                   Expanded(child: _name("Bride", "Heng\nSreyly")),
                 ],
               ),
-              SizedBox(height: 36),
+              SizedBox(height: 66),
               Text(
                 "SAVE THE DATE",
                 style: baseTextStyle.copyWith(
@@ -123,11 +120,10 @@ class _NameSectionState extends State<NameSection> {
         SizedBox(height: 16),
         Text(
           value,
-          style: baseTextStyle.copyWith(
-            fontFamily: 'Madina',
+          style: nameTextStyle.copyWith(
             fontSize: 62,
             height: 1,
-            fontWeight: FontWeight.w100,
+            // fontWeight: FontWeight.w100,
           ),
           textAlign: TextAlign.center,
         ),

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "wedding-4928e"
-  }
+    "production": "sovann-sreyly-wedding",
+    "default": "sovann-sreyly-wedding"
+  },
+  "targets": {},
+  "etags": {}
 }

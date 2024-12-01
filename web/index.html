@@ -33,6 +33,25 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+
+<script type="module">
+  // Import the Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAFuWToimaHsKLkNCJx_E233ILj0WhMkBY",
+    authDomain: "sovann-sreyly-wedding.web.com",
+    projectId: "sovann-sreyly-wedding",
+    storageBucket: "sovann-sreyly-wedding.firebasestorage.app",
+    messagingSenderId: "573399434401",
+    appId: "1:573399434401:web:10b1cf471b75c031cbdce0",
+    databaseURL: "https://messages.asia-southeast1.firebasedatabase.com"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
+<script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

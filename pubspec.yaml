@@ -27,9 +27,13 @@ dependencies:
   animated_text_kit: ^4.2.2
   visibility_detector: ^0.4.0+2
   flutter_svg: ^2.0.14
+  firebase_core: ^3.0.0
   cloud_firestore: ^5.5.0
-  firebase_core: ^3.8.0
   keyboard_dismisser: ^3.0.0
+  appwrite: ^13.0.0
+  carousel_slider: ^5.0.0
+  auto_size_text: ^3.0.0
+  lottie: ^3.1.3
 
 dev_dependencies:
   flutter_test:
@@ -41,7 +45,7 @@ flutter:
 
   uses-material-design: true
   assets:
-#    - assets/photo/
+    - assets/lotties/
     - assets/decor/loading.svg
     - assets/decor/smoke_hearh.webp
     - assets/decor/sakura1.png
@@ -73,6 +77,28 @@ flutter:
     - family: Batusa
       fonts:
         - asset: assets/font/Batusa.otf
+    - family: HughIsLifePersonalUseItalic-K7axe
+      fonts:
+        - asset: assets/font/HughIsLifePersonalUseItalic-K7axe.ttf
+    - family: KnightornsfreepersonaluseScrip-9M68K
+      fonts:
+        - asset: assets/font/KnightornsfreepersonaluseScrip-9M68K.otf
+
+    - family: Metropolis-515rv
+      fonts:
+        - asset: assets/font/Metropolis-515rv.otf
+
+    - family: Metropolis-6Y5M1
+      fonts:
+        - asset: assets/font/Metropolis-6Y5M1.ttf
+
+    - family: HapshaSophiaScript-e91Yl
+      fonts:
+        - asset: assets/font/HapshaSophiaScript-e91Yl.otf
+
+    - family: HelloGraduationScript-PKR3P
+      fonts:
+        - asset: assets/font/HelloGraduationScript-PKR3P.ttf
 
   #   - family: Trajan Pro
   #     fonts:

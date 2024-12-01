@@ -25,6 +25,8 @@ class Asset{
   static const String sakura3 = "https://media-public.canva.com/xNZA4/MAFJ32xNZA4/1/t.png";
   static const String mapSvg = "assets/decor/map.svg";
   static const String nameInitial = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/name_intial.png";
+  static const String nameInitialBg = "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/decor/name_intial_bg.png";
+  static const String heartLoading = "assets/lotties/heart_loading.json";
 
 
 }
