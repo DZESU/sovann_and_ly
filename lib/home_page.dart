@@ -33,14 +33,12 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
-  // final carouselController = CarouselSliderController();
+  ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // carouselController.startAutoPlay();
-    });
+
   }
 
   @override
@@ -56,7 +54,9 @@ class _HomePageState extends ConsumerState<HomePage> {
     final body = viewModel.isImagesLoaded ? child : _loading(context);
     // final body =  _loading(context);
 
-    return Scaffold(body: Opacity(opacity: 1, child: body));
+    return Scaffold(
+      body: Opacity(opacity: 1, child: body),
+    );
   }
 
   Widget _web(BuildContext context) {
@@ -85,6 +85,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           fit: BoxFit.fill,
         ),
         CustomScrollView(
+          controller: _scrollController,
           slivers: [
             SliverToBoxAdapter(child: Introduction(name: widget.name)),
             silverGap,

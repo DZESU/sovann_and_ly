@@ -69,7 +69,7 @@ class ImageViewModel extends ChangeNotifier {
     "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/1.jpg",
     "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/2.jpg",
     "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/3.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/4.jpg",
+    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/5.jpg",
     "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/5.jpg",
   ];
 

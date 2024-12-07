@@ -56,42 +56,12 @@ flutter:
 #    - assets/images/
 
   fonts:
-#    - family: Hatolie
-#      fonts:
-#        - asset: assets/font/Hatolie.ttf
-#    - family: Photograph Signature
-#      fonts:
-#        - asset: assets/font/photograph_signature.ttf
-#    - family: RetroSignature
-#      fonts:
-#        - asset: assets/font/RetroSignature.otf
-#    - family: Andasia
-#      fonts:
-#        - asset: assets/font/Andasia.ttf
-#    - family: WorldDiscovery
-#      fonts:
-#        - asset: assets/font/WorldDiscovery.otf
-#    - family: Madina
-#      fonts:
-#        - asset: assets/font/Madina.ttf
     - family: Batusa
       fonts:
         - asset: assets/font/Batusa.otf
-#    - family: HughIsLifePersonalUseItalic-K7axe
-#      fonts:
-#        - asset: assets/font/HughIsLifePersonalUseItalic-K7axe.ttf
-#    - family: KnightornsfreepersonaluseScrip-9M68K
-#      fonts:
-#        - asset: assets/font/KnightornsfreepersonaluseScrip-9M68K.otf
-
-#    - family: Metropolis-515rv
-#      fonts:
-#        - asset: assets/font/Metropolis-515rv.otf
-
-#    - family: Metropolis-6Y5M1
-#      fonts:
-#        - asset: assets/font/Metropolis-6Y5M1.ttf
-
+    - family: Ridayparcia-JRgqn
+      fonts:
+        - asset: assets/font/Ridayparcia-JRgqn.otf
     - family: HapshaSophiaScript-e91Yl
       fonts:
         - asset: assets/font/HapshaSophiaScript-e91Yl.otf

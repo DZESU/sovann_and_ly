@@ -45,7 +45,7 @@ class _WeddingDetailState extends State<WeddingDetail> {
                             repeat: false, animate: _titleAnimate)))),
             SizedBox(height: 8),
             Text(
-              "PARENTS",
+              "PARENTS' NAME",
               style: baseTextStyle.copyWith(
                   fontSize: 20, fontWeight: FontWeight.w600, color: mainColor),
             ),

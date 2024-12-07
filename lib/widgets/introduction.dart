@@ -26,15 +26,18 @@ class _IntroductionState extends State<Introduction> {
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: 1.sh),
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned(
               top: 0,
               right: -20,
-              child: SizedBox(width: 140, child: Opacity(opacity: .5,child: decorRight))),
+              child: SizedBox(
+                  width: 140, child: Opacity(opacity: .5, child: decorRight))),
           SizedBox(
               // height: 1.sh,
               child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 32),
@@ -42,36 +45,41 @@ class _IntroductionState extends State<Introduction> {
                 "Wedding Invitation",
                 style: titleTextStyle,
               ),
-              Transform.scale(scale: 2.5,child: SizedBox(height: 50,child: Lottie.asset(Asset.decorLine, repeat: false, animate: true))),
+              Transform.scale(
+                  scale: 2.5,
+                  child: SizedBox(
+                      height: 50,
+                      child: Lottie.asset(Asset.decorLine,
+                          repeat: false, animate: true))),
               SizedBox(height: 24),
-              if(name.isNotEmpty)
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Dear ",
-                    style: baseTextStyle.copyWith(fontSize: 30),
-                  ),
-                  Flexible(
-                    child: AnimatedTextKit(
-                      totalRepeatCount: 1,
-                      animatedTexts: [
-                        TypewriterAnimatedText(
-                          name.titleCase,
-                          speed: Duration(milliseconds: 100),
-                          textAlign: TextAlign.center,
-                          textStyle: baseTextStyle.copyWith(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: mainColor),
-                          cursor: '|',
-                        ),
-                      ],
+              if (name.isNotEmpty)
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Dear ",
+                      style: baseTextStyle.copyWith(fontSize: 30),
                     ),
-                  ),
-                ],
-              ),
+                    Flexible(
+                      child: AnimatedTextKit(
+                        totalRepeatCount: 1,
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            name.titleCase,
+                            speed: Duration(milliseconds: 100),
+                            textAlign: TextAlign.center,
+                            textStyle: baseTextStyle.copyWith(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: mainColor),
+                            cursor: '|',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               SlideInLeft(
                 duration: Duration(milliseconds: 1000),
                 delay: Duration(milliseconds: 500),
@@ -80,7 +88,24 @@ class _IntroductionState extends State<Introduction> {
                   delay: Duration(milliseconds: 600),
                   child: Text(
                     "You are invited to the wedding of",
-                    style: baseTextStyle.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
+                    style: baseTextStyle.copyWith(
+                        fontSize: 20, fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              SizedBox(height: 16),
+              SlideInUp(
+                duration: Duration(milliseconds: 1000),
+                delay: Duration(milliseconds: 500),
+                child: FadeIn(
+                  duration: Duration(milliseconds: 1000),
+                  delay: Duration(milliseconds: 600),
+                  child: Text(
+                    "Pory Sovann & Heng Sreyly",
+                    style: baseTextStyle.copyWith(
+                      fontFamily: "Ridayparcia-JRgqn",
+                        fontSize: 40, fontWeight: FontWeight.w600, color: mainColor),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -89,7 +114,10 @@ class _IntroductionState extends State<Introduction> {
               SizedBox(height: 24),
               FadeInUp(
                   delay: Duration(seconds: 1),
-                  child: Image.network(Asset.introductionMain)),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: Image.network(Asset.introductionMain),
+                  )),
             ],
           )),
           Positioned(

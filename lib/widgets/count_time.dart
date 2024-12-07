@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:sovann_and_ly/app.dart';
+import 'package:sovann_and_ly/asset.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class CountdownTimer extends StatefulWidget {
@@ -80,6 +82,13 @@ class _CountdownTimerState extends State<CountdownTimer> {
           "Our Wedding",
           style: titleTextStyle,
         ),
+        Transform.scale(
+            scale: 2.5,
+            child: SizedBox(
+                height: 50,
+                child: Lottie.asset(Asset.decorLine,
+                    repeat: false, animate: true))),
+
         SizedBox(height: 16.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -103,7 +112,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text("Save the Date", style: baseTextStyle.copyWith(color: mainColor),),
-              SizedBox(width: 8.w),
+              SizedBox(width: 8),
               Icon(Symbols.calendar_add_on, color: mainColor, size: 22,),
             ],
           ),

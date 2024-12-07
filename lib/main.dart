@@ -9,15 +9,15 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // try {
-  //
-  //   await Firebase.initializeApp(
-  //     options: DefaultFirebaseOptions.currentPlatform,
-  //   );
-  //   print('Firebase initialized successfully');
-  // } catch (e) {
-  //   print('Error initializing Firebase: $e');
-  // }
+  try {
+
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    print('Firebase initialized successfully');
+  } catch (e) {
+    print('Error initializing Firebase: $e');
+  }
   usePathUrlStrategy();
   runApp(const ProviderScope(child: App()));
 }

@@ -61,11 +61,7 @@ class _MessageSectionState extends State<MessageSection> {
     } catch (e, s) {
       print(e);
       debugPrintStack(stackTrace: s);
-      if(kDebugMode) {
-        ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save data: $e')),
-      );
-      }
+
     }
   }
 
@@ -84,9 +80,9 @@ class _MessageSectionState extends State<MessageSection> {
         _messages = response.documents.map((doc) => doc.data).toList();
       });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to fetch messages: $e')),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(content: Text('Failed to fetch messages: $e')),
+      // );
     }
   }
 
