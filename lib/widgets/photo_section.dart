@@ -70,9 +70,11 @@ class _PhotoSectionState extends ConsumerState<PhotoSection> {
     return VisibilityDetector(
         key: Key('photo_$index'),
         onVisibilityChanged: (info) {
-          setState(() {
-            animate[index] = true;
-          });
+          if(context.mounted) {
+            setState(() {
+              animate[index] = true;
+            });
+          }
         },
         child: child);
   }
