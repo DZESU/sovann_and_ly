@@ -112,7 +112,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     children: [
                       WeddingDetail(),
                       SizedBox(height: 32),
-                      WeddingAgendaV2()
+                      WeddingAgendaV2(),
                     ],
                   ),
                 ],
@@ -130,7 +130,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             // if(widget.name?.isEmpty == true || kDebugMode)
             SliverToBoxAdapter(
                 child: MessageSection(
-              username: widget.name ?? 'god',
+              username: widget.name,
             )),
             silverGap,
             SliverToBoxAdapter(

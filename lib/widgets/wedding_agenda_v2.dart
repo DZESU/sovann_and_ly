@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/asset.dart';
+import 'package:sovann_and_ly/debug_box.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class WeddingAgendaV2 extends StatefulWidget {
@@ -17,36 +18,45 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Row(
-        children: [
-          Expanded(child: _leftSection()),
-          VerticalDivider(
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(child: _leftSection()),
+        SizedBox(
+          height: 600,
+          child: VerticalDivider(
             color: mainColor,
             thickness: 2,
             width: 2,
+            indent: 0,
+            endIndent: 0,
           ),
-          Expanded(child: _rightSection()),
-        ],
-      ),
+        ),
+        Container(
+          width: 1,
+          color: mainColor,
+        ),
+        Flexible(child: _rightSection()),
+      ],
     );
   }
 
   Widget _leftSection() {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         _event(
           icon: Asset.cloth,
           time: "06:30 AM",
-          label: "Groom’s Procession\n(Hae Chum Noun)",
+          label: "Groom’s Procession\n(ពិធីហែជំនូន)",
           isRight: false,
           visible: false,
         ),
         _event(
           icon: Asset.ring,
           time: "08:15 AM",
-          label: "Ring Exchange\n& Honoring the Parents\n(Kat Khan Sla)",
+          label: "Ring Exchange\n& Honoring the Parents\n(ពិធីបំពាក់ចិញ្ចៀន និងកាត់ខាន់ស្លា)",
           isRight: false,
           visible: true,
           index: 1,
@@ -54,14 +64,14 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.monk,
           time: "09:02 AM",
-          label: "Monks’ Blessing (Soat Mun)",
+          label: "Monks’ Blessing\n(ពិធីសូត្រមន្ត)",
           isRight: false,
           visible: false,
         ),
         _event(
           icon: Asset.siccor,
           time: "09:35 AM",
-          label: "Hair Cutting (Kat sork)",
+          label: "Hair Cutting\n(ពិធីកាត់សក់)",
           isRight: false,
           visible: true,
           index: 3,
@@ -69,14 +79,14 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.heart,
           time: "10:32 AM",
-          label: "Knot Tying (Sompeas Ptem)",
+          label: "Knot Tying\n(ពិធីសំពះផ្ទឹម)",
           isRight: false,
           visible: false,
         ),
         _event(
           icon: Asset.fork,
           time: "12:00 PM",
-          label: "Wedding Lunch",
+          label: "Wedding Lunch\n(អាហារថ្ងៃត្រង់)",
           isRight: false,
           visible: true,
           index: 5,
@@ -84,22 +94,24 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.glasses,
           time: "05:00 PM",
-          label: "Dinner Party",
+          label: "Dinner Party\n(ពិសាភោជនាហារពេលល្ងាច)",
           isRight: false,
           visible: false,
         ),
+        SizedBox(height: 20),
       ],
     );
   }
 
   Widget _rightSection() {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _event(
           icon: Asset.cloth,
           time: "06:30 AM",
-          label: "Groom’s Procession\n(Hae Chum Noun)",
+          label: "Groom’s Procession\n(ពិធីហែជំនូន)",
           isRight: true,
           visible: true,
           index: 0,
@@ -107,14 +119,14 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.ring,
           time: "08:15 AM",
-          label: "Ring Exchange\n& Honoring the Parents\n(Kat Khan Sla)",
+          label: "Ring Exchange\n& Honoring the Parents\n(ពិធីបំពាក់ចិញ្ចៀន និងកាត់ខាន់ស្លា)",
           isRight: true,
           visible: false,
         ),
         _event(
           icon: Asset.monk,
           time: "09:02 AM",
-          label: "Monks’ Blessing (Soat Mun)",
+          label: "Monks’ Blessing\n(ពិធីសូត្រមន្ត)",
           isRight: true,
           visible: true,
           index: 2,
@@ -122,15 +134,14 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.siccor,
           time: "09:35 AM",
-          label: "Hair Cutting (Kat sork)",
+          label: "Hair Cutting\n(ពិធីកាត់សក់)",
           isRight: true,
           visible: false,
-
         ),
         _event(
           icon: Asset.heart,
           time: "10:32 AM",
-          label: "Knot Tying (Sompeas Ptem)",
+          label: "Knot Tying\n(ពិធីសំពះផ្ទឹម)",
           isRight: true,
           visible: true,
           index: 4,
@@ -138,18 +149,19 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
         _event(
           icon: Asset.fork,
           time: "12:00 PM",
-          label: "Wedding Lunch",
+          label: "Wedding Lunch\n(អាហារថ្ងៃត្រង់)",
           isRight: true,
           visible: false,
         ),
         _event(
           icon: Asset.glasses,
           time: "05:00 PM",
-          label: "Dinner Party",
+          label: "Dinner Party\n(ពិសាភោជនាហារពេលល្ងាច)",
           isRight: true,
           visible: true,
           index: 6,
         ),
+        SizedBox(height: 20),
       ],
     );
   }
@@ -174,15 +186,19 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
                 isRight ? CrossAxisAlignment.start : CrossAxisAlignment.end,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                time,
-                style: baseTextStyle.copyWith(
-                    fontWeight: FontWeight.bold, color: mainColor),
+              Flexible(
+                child: Text(
+                  time,
+                  style: baseTextStyle.copyWith(
+                      fontWeight: FontWeight.bold, color: mainColor),
+                ),
               ),
-              Text(
-                label,
-                style: baseTextStyle.copyWith(fontWeight: FontWeight.w600),
-                textAlign: isRight ? TextAlign.start : TextAlign.end,
+              Flexible(
+                child: Text(
+                  label,
+                  style: baseTextStyle.copyWith(fontWeight: FontWeight.w600),
+                  textAlign: isRight ? TextAlign.start : TextAlign.end,
+                ),
               ),
             ],
           ),
@@ -234,11 +250,13 @@ class _WeddingAgendaV2State extends State<WeddingAgendaV2> {
 
   Widget _animateWidget({required int index, required Widget child}) {
     return VisibilityDetector(
-        key: Key('photo_$index'),
+        key: Key('event_$index'),
         onVisibilityChanged: (info) {
-          setState(() {
-            animate[index] = true;
-          });
+          if(context.mounted) {
+            setState(() {
+              animate[index] = true;
+            });
+          }
         },
         child: child);
   }

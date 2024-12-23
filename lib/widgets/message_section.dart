@@ -11,9 +11,9 @@ import 'package:sovann_and_ly/app.dart';
 import 'package:sovann_and_ly/firebase_options.dart'; // For date formatting
 
 class MessageSection extends StatefulWidget {
-  final String username;
+  final String? username;
 
-  const MessageSection({Key? key, required this.username}) : super(key: key);
+  const MessageSection({Key? key, this.username}) : super(key: key);
 
   @override
   _MessageSectionState createState() => _MessageSectionState();
@@ -92,6 +92,7 @@ class _MessageSectionState extends State<MessageSection> {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
+          if(widget.username != null)
           IntrinsicHeight(
             child: Row(
               children: [
@@ -121,6 +122,8 @@ class _MessageSectionState extends State<MessageSection> {
             ),
           ),
           SizedBox(height: 10),
+          if(_messages.isEmpty)
+            Text("Be the first to send us your message 🥰", style: baseTextStyle,),
           ListView.builder(
             padding: EdgeInsets.zero,
             itemCount: _messages.length,
