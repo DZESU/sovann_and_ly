@@ -66,7 +66,7 @@ class _IntroductionState extends State<Introduction> {
                         totalRepeatCount: 1,
                         animatedTexts: [
                           TypewriterAnimatedText(
-                            name.titleCase,
+                            name,
                             speed: Duration(milliseconds: 100),
                             textAlign: TextAlign.center,
                             textStyle: baseTextStyle.copyWith(

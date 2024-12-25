@@ -65,12 +65,12 @@ class ImageViewModel extends ChangeNotifier {
   final _urls = [];
 
   final _photosSectionUrl = [
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/5.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/3.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/2.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/1.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/0.jpg",
-    "https://raw.githubusercontent.com/DZESU/sovann_and_ly/refs/heads/main/assets/images/4.jpg",
+    "https://cloud.appwrite.io/v1/storage/buckets/67695f0b000e080472d9/files/6769765600017892bc1e/view?project=674b3cc10020b36635dc",
+    "https://cloud.appwrite.io/v1/storage/buckets/67695f0b000e080472d9/files/67695fc7003783496283/view?project=674b3cc10020b36635dc",
+    "https://cloud.appwrite.io/v1/storage/buckets/67695f0b000e080472d9/files/67695fb4001a88b1f2fc/view?project=674b3cc10020b36635dc",
+    "https://cloud.appwrite.io/v1/storage/buckets/67695f0b000e080472d9/files/6769765e000ad731472b/view?project=674b3cc10020b36635dc",
+    "https://cloud.appwrite.io/v1/storage/buckets/67695f0b000e080472d9/files/67697667001c9d98e4da/view?project=674b3cc10020b36635dc",
+    "https://cloud.appwrite.io/v1/storage/buckets/67695f0b000e080472d9/files/67695feb001cc9378d77/view?project=674b3cc10020b36635dc",
   ];
 
   final introSectionUrl = [
@@ -145,11 +145,28 @@ final _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) {
-        print(state.uri);
+        String? username= state.uri.queryParameters["name"];
+        username = username?.replaceAll(" and ", " & ");
+        username = capitalizeEachWord(username);
         return HomePage(
-          name: state.uri.queryParameters["name"]?.titleCase,
+          name: username,
         );
       },
     ),
   ],
 );
+
+String? capitalizeEachWord(String? input) {
+  if (input == null) return null;
+  if (input.isEmpty) return input;
+
+  return input
+      .split(' ') // Split the string into words based on spaces
+      .map((word) => word.isEmpty
+          ? word
+          : word[0].toUpperCase() +
+              word
+                  .substring(1)
+                  .toLowerCase()) // Capitalize first letter and lowercase the rest
+      .join(' '); // Join the words back into a single string
+}

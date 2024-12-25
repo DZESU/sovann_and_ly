@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:sovann_and_ly/app.dart';
+import 'package:sovann_and_ly/debug_box.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class PhotoSection extends ConsumerStatefulWidget {
@@ -82,13 +83,13 @@ class _PhotoSectionState extends ConsumerState<PhotoSection> {
   Widget _bigImage(BuildContext context, int index) {
     return GestureDetector(
         onTap: () => _viewPhoto(context, index),
-        child: Hero(tag: index, child: Image.network(images[index])));
+        child: Image.network(images[index]));
   }
 
   Widget _smallImage(BuildContext context, int index) {
     return GestureDetector(
         onTap: () => _viewPhoto(context, index),
-        child: Hero(tag: index, child: Image.network(images[index])));
+        child: Image.network(images[index]));
   }
 
   void _viewPhoto(BuildContext context, int index) {
